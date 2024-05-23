@@ -9,8 +9,7 @@ import (
 	"strings"
 )
 
-func ParserDay(context []byte) ParseResult {
-	res := ParseResult{}
+func ParserDay(context []byte) (res ParseResult) {
 	re := regexp.MustCompile(`<sup>(.*?)历史天气</sup>`)
 	province := re.FindSubmatch(context)
 	if len(province) != 2 {
@@ -43,9 +42,7 @@ func ParserDay(context []byte) ParseResult {
 			Rain:            strings.TrimSpace(htmlquery.InnerText(devs[6])),
 		}
 
-		fmt.Println(w)
-		res.Requests = append(res.Requests, Request{Url: "", FuncName: "NilParser"})
 		res.Items = append(res.Items, w)
 	}
-	return res
+	return
 }

@@ -7,7 +7,9 @@ import (
 	"spider/src/spider_distribute/persist/client"
 )
 
+//Distributed version crawler entry point
+
 func main() {
-	concurrentScheduler := &engine.ConcurrentScheduler{Scheduler: &scheduler.QueuedScheduler{}, WorkerCnt: 1, ItemChan: client.ItemSaver(config.HOST)}
+	concurrentScheduler := &engine.ConcurrentScheduler{Scheduler: &scheduler.QueuedScheduler{}, WorkerCnt: 1, ItemChan: client.ItemSaver(config.SAVEHOST)}
 	concurrentScheduler.Run(engine.Request{Url: "https://www.tianqi24.com/historycity/", FuncName: "City"})
 }

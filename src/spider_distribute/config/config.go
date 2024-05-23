@@ -1,9 +1,11 @@
 package config
 
-//需要数据库提前存在， 表不用
-
+// The database needs to exist in advance, the table is not used, and
+// some configuration files are required.
 const (
-	HOST          = ":1234"
+	WORKERHOST1   = ":1235"
+	WORKERHOST2   = ":1236"
+	SAVEHOST      = ":1234"
 	DATABASE      = "spider"
 	USERNAME      = "root"
 	PASSWD        = "abc"

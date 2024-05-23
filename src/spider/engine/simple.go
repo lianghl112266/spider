@@ -7,6 +7,7 @@ import (
 type SimpleScheduler struct {
 }
 
+// Simple serial execution engine
 func (_ *SimpleScheduler) Run(seeds ...Request) {
 	var requests []Request
 	for _, r := range seeds {

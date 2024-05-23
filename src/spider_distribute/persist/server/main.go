@@ -9,8 +9,9 @@ import (
 	"spider/src/spider_distribute/rpc_support"
 )
 
+// Persistence server function entry
 func main() {
 	dsn := fmt.Sprintf("%s:%s@tcp(127.0.0.1:3306)/%s?charset=utf8mb4&parseTime=True&loc=Local", config.USERNAME, config.PASSWD, config.DATABASE)
 	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	_ = rpc_support.ServeRPC(config.HOST, &persist.ItemSaverService{DB: db})
+	_ = rpc_support.ServeRPC(config.SAVEHOST, &persist.ItemSaverService{DB: db})
 }

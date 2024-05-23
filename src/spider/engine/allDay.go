@@ -6,11 +6,11 @@ import (
 )
 
 // AllDay output https://www.tianqi24.com/beijing/history01.html 1月
-func AllDay(context []byte) ParseResult {
-	res := ParseResult{}
+func AllDay(context []byte) (res ParseResult) {
+
 	reRes := regexp.MustCompile(`(https://www.tianqi24.com/.+?).html`).FindSubmatch(context)
 	if len(reRes) != 2 {
-		return res
+		return
 	}
 	prefix := string(reRes[1])
 	re := regexp.MustCompile(`<option value='(.+?)' >(.+?)</option>`)
@@ -25,5 +25,5 @@ func AllDay(context []byte) ParseResult {
 
 		break
 	}
-	return res
+	return
 }

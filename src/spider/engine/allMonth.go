@@ -6,8 +6,7 @@ import (
 )
 
 // AllMonth https://www.tianqi24.com//beijing/history.html 北京
-func AllMonth(context []byte) ParseResult {
-	res := ParseResult{}
+func AllMonth(context []byte) (res ParseResult) {
 	re := regexp.MustCompile(`<a href="(/(.+?)/history.html)" title.+?>(.+?)</a>`)
 	prefix := "https://www.tianqi24.com"
 	for i, row := range re.FindAllSubmatch(context, -1) {
@@ -21,5 +20,5 @@ func AllMonth(context []byte) ParseResult {
 
 		break
 	}
-	return res
+	return
 }

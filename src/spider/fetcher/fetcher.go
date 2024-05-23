@@ -14,14 +14,17 @@ var timeRate = time.Tick(10 * time.Millisecond)
 func Fetch(url string) ([]byte, error) {
 	<-timeRate
 
+	//Create client object and set proxy
 	client := http.Client{}
 	//client.Transport = &http.Transport{Proxy: http.ProxyFromEnvironment}
 	client.Transport = GetTransportFieldURL("http://127.0.0.1:20171")
 
+	//Create request object
 	req, _ := http.NewRequest(http.MethodGet, url, nil)
 	req.Header.Set("User-Agent",
 		"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36")
 
+	//Get corresponding
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("The request is incorrect", err)
@@ -33,6 +36,7 @@ func Fetch(url string) ([]byte, error) {
 	return res, nil
 }
 
+// Get proxy from URL
 func GetTransportFieldURL(proxy_addr string) (transport *http.Transport) {
 	url_i := url.URL{}
 	url_proxy, err := url_i.Parse(proxy_addr)

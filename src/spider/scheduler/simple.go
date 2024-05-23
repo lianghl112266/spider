@@ -4,6 +4,8 @@ import (
 	"spider/src/spider/engine"
 )
 
+// This simple concurrent scheduler lets all workers go to a request
+// pipeline to grab data
 type SimpleScheduler struct {
 	in chan engine.Request
 }
