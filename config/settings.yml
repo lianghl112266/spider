@@ -1,0 +1,8 @@
+worker:
+  ports: ":1234"
+
+db:
+  dsn: "root:abc@tcp(lazy:3306)/spider?charset=utf8mb4&parseTime=True&loc=Local"
+
+persist:
+  port: ":1235"
